@@ -106,6 +106,13 @@ function detectType(mimetype) {
   if (mimetype.startsWith("image")) return "image";
   if (mimetype.startsWith("pdf")) return "pdf";
   if (mimetype.startsWith("text")) return "text";
+  if (
+    mimetype === "application/vnd.ms-pki.stl" ||
+    mimetype === "model/stl" ||
+    mimetype === "application/sla"
+  )
+    return "stl";
+  if (mimetype === "model/obj") return "obj";  
   return "blob";
 }
 
