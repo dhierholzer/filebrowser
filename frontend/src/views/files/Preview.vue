@@ -84,6 +84,8 @@
           you can <a :href="downloadUrl">download it</a>
           and watch it with your favorite video player!
         </video>
+        <model-stl v-else-if="req.extension.toLowerCase() == '.stl'" class="model-box" :src="raw" :backgroundColor="'#ffc'"></model-stl>
+        <model-obj v-else-if="req.extension.toLowerCase() == '.obj'" class="model-box" :src="raw" :backgroundColor="'#ffc'"></model-obj>        
         <object
           v-else-if="req.extension.toLowerCase() == '.pdf'"
           class="pdf"
@@ -151,6 +153,8 @@ import throttle from "lodash.throttle";
 import HeaderBar from "@/components/header/HeaderBar";
 import Action from "@/components/header/Action";
 import ExtendedImage from "@/components/files/ExtendedImage";
+import { ModelStl } from "vue-3d-model";
+import { ModelObj } from "vue-3d-model";
 
 const mediaTypes = ["image", "video", "audio", "blob"];
 
@@ -160,6 +164,8 @@ export default {
     HeaderBar,
     Action,
     ExtendedImage,
+    ModelStl,
+    ModelObj,
   },
   data: function () {
     return {
